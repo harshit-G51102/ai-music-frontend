@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import TrueFocus from './TrueFocus';
 import { Recommendations } from '../api';
-import cover1 from '../images/cover1.png'
-import cover2 from '../images/cover2.png'
-import cover3 from '../images/cover3.png'
+import cover1 from '../images/cover1.png';
+import cover2 from '../images/cover2.png';
+import cover3 from '../images/cover3.png';
+import musicLoader from '../images/music_loader.mp4';
 
 const Music = () => {
   const [query, setQuery] = useState("");
@@ -25,12 +26,10 @@ const Music = () => {
     try {
       const data = await Recommendations(query);
       setResults(data.response);
-    }
-    catch (err) {
+    } catch (err) {
       setError("Failed to fetch recommendations");
       alert(error);
-    }
-    finally {
+    } finally {
       setLoading(false);
     }
   };
@@ -69,9 +68,12 @@ const Music = () => {
             transition={{ duration: 0.2, ease: "easeOut" }}
             className="absolute w-[90%] p-1 rounded-lg bg-gradient-to-r from-blue-500 to-green-500 shadow-[0_0_20px_5px] shadow-blue-500/50"
           >
-            <div className="h-full w-full bg-gradient-to-r from-slate-900 to-black text-white overflow-x-hidden rounded-lg shadow-[0_0_30px_5px] shadow-green-500/50 overflow-y-scroll overflow-x-scroll">
+            <div className="h-full w-full bg-gradient-to-r from-slate-900 to-black text-white rounded-lg shadow-[0_0_30px_5px] shadow-green-500/50 overflow-y-scroll overflow-x-scroll " style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               {loading ? (
-                <div className='h-[100%] w-[100%] flex flex-col items-center justify-center text-center'><h1>LOADING...</h1></div>
+                <div className='h-[100%] w-[100%] flex flex-col items-center justify-center text-center p-16'>
+                  <video src={musicLoader} autoPlay loop muted className="w-32 h-32 rounded-full" />
+                  <span>Loading ...</span>
+                </div>
               ) : (
                 <>
                   <h2 className="text-4xl font-bold mb-4 text-center mb-8">Songs List</h2>
@@ -91,9 +93,11 @@ const Music = () => {
                         {results.map((song, index) => (
                           <tr key={index}>
                             <td className="border border-gray-500 px-4 py-2">
-                              {index%2===0 && (<img src={cover1} alt="cover" className="w-16 h-16 object-cover rounded-lg" />)}
-                              {index%2===1 && (<img src={cover2} alt="cover" className="w-16 h-16 object-cover rounded-lg" />)}
-                              {index%2===2 && (<img src={cover3} alt="cover" className="w-16 h-16 object-cover rounded-lg" />)}
+                              {index === 0 && (<img src={cover1} alt="cover" className="w-12 h-12 object-cover rounded-lg" />)}
+                              {index === 1 && (<img src={cover2} alt="cover" className="w-12 h-12 object-cover rounded-lg" />)}
+                              {index === 2 && (<img src={cover3} alt="cover" className="w-12 h-12 object-cover rounded-lg" />)}
+                              {index === 3 && (<img src={cover1} alt="cover" className="w-12 h-12 object-cover rounded-lg" />)}
+                              {index === 4 && (<img src={cover2} alt="cover" className="w-12 h-12 object-cover rounded-lg" />)}
                             </td>
                             <td className="border border-gray-500 px-4 py-2">{song.name}</td>
                             <td className="border border-gray-500 px-4 py-2">{song.album}</td>
