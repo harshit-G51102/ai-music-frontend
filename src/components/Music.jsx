@@ -76,7 +76,7 @@ const Music = () => {
                 <>
                   <h2 className="text-4xl font-bold mb-4 text-center mb-8">Songs List</h2>
                   <div className='w-full'>
-                    <table className="table-auto w-full border-collapse border border-gray-500">
+                    <table className="text-xs md:text-sm lg:text-xl table-auto w-full border-collapse border border-gray-500">
                       <thead>
                         <tr>
                           <th className="border border-gray-500 px-4 py-2">Image</th>
