@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import Aurora from './Aurora';
 import GradientText from './GradientText';
-import ShinyText from './Shinytext';
-
 const LandingPage = () => {
   return (
     <div className="relative w-screen h-screen flex items-center justify-center">
@@ -23,7 +21,7 @@ const LandingPage = () => {
           to="/music"
           className="mt-8 px-8 py-4 border-2 border-gray-400 bg-gray-800 hover:bg-gray-900 rounded-2xl text-xl"
         >
-          <ShinyText text="Get Started" speed={1} />
+          Get Started
         </Link>
       </div>
     </div>
