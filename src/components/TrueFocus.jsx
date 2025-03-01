@@ -57,7 +57,7 @@ const TrueFocus = ({
 
   return (
     <div
-      className="relative flex gap-4 justify-center items-center flex-wrap"
+      className="relative flex gap-4 justify-center items-center flex-wrap mt-20"
       ref={containerRef}
     >
       {words.map((word, index) => {

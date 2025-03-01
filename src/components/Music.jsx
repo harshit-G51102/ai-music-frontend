@@ -6,6 +6,7 @@ import cover1 from '../images/cover1.png';
 import cover2 from '../images/cover2.png';
 import cover3 from '../images/cover3.png';
 import musicLoader from '../images/music_loader.mp4';
+import { LampContainer } from './LampContainer';
 
 const Music = () => {
   const [query, setQuery] = useState("");
@@ -35,8 +36,18 @@ const Music = () => {
   };
 
   return (
-    <div className="relative w-screen h-screen bg-slate-900 flex items-center justify-center">
+    <LampContainer>
       <div className="text-center w-[100%]">
+    <motion.h1
+      initial={{ opacity: 0.5, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{
+        delay: 0.3,
+        duration: 0.8,
+        ease: "easeInOut",
+      }}
+      className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
+    >
         <TrueFocus
           sentence="Get Music Recommendations"
           manualMode={false}
@@ -45,30 +56,30 @@ const Music = () => {
           animationDuration={1}
           pauseBetweenAnimations={0.5}
         />
+    </motion.h1>
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           type="text"
           placeholder="Enter song name"
           className="p-2 w-[30%] text-white rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-4"
-        />
+          />
         <button
           onClick={handleRecommendation}
           className="ml-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
-        >
+          >
           Submit
         </button>
-      </div>
-      <AnimatePresence>
+        <AnimatePresence>
         {showSongs && (
           <motion.div
             initial={{ scale: 0.5, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.5, opacity: 0 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute w-[90%] p-1 rounded-lg bg-gradient-to-r from-blue-500 to-green-500 shadow-[0_0_20px_5px] shadow-blue-500/50"
+            className="absolute top-0 w-[90%] p-1 rounded-lg bg-gradient-to-r from-blue-500 to-green-500 shadow-[0_0_20px_5px] shadow-blue-500/50"
           >
-            <div className="h-full w-full bg-gradient-to-r from-slate-900 to-black text-white rounded-lg shadow-[0_0_30px_5px] shadow-green-500/50 overflow-y-scroll overflow-x-scroll " style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            <div className="h-full  w-full bg-gradient-to-r from-slate-900 to-black text-white rounded-lg shadow-[0_0_30px_5px] shadow-green-500/50 overflow-y-scroll overflow-x-scroll pb-16" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               {loading ? (
                 <div className='h-[100%] w-[100%] flex flex-col items-center justify-center text-center p-16'>
                   <video src={musicLoader} autoPlay loop muted className="w-32 h-32 rounded-full" />
@@ -121,7 +132,8 @@ const Music = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+          </div>
+  </LampContainer>
   );
 }
 
