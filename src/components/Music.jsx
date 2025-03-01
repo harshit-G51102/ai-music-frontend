@@ -62,7 +62,7 @@ const Music = () => {
           onChange={(e) => setQuery(e.target.value)}
           type="text"
           placeholder="Enter song name"
-          className="p-2 w-[30%] text-white rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-4"
+          className="p-2 w-[70%] md:w-[30%] text-white rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-4"
           />
         <button
           onClick={handleRecommendation}
